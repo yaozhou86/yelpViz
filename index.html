@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Visualization of Yelp Businesses</title>
+    <link rel="stylesheet" href="lib/bootstrap.min.css">  <!--bootstrap for styling-->
+</head>
+
+
+<style> /* set the CSS for x,y axis and D3-tip*/
+
+body {
+  font: 11px sans-serif;
+}
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+.bar {
+  fill: orange;
+}
+.bar:hover {
+  fill: orangered ;
+}
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+</style>
+
+<body class="container"> <!-- content -->
+    <main>
+        <h1 id="title">Through Yelp</h1>
+        <p> The application retrieves up to 1000 business records through Yelp API based on user input of business type, location and minimum review counts. The data are visualized into a barchart and a bubble chart. The barchart displays the number of businesses for each rating level and the bubble chart examines the category of each businesses and presents the aggregated data.</p>  
+        <div id='search' style="margin-top:2em">
+            <input name="business" placeholder="Restaurant" id = "business_searchBox"> </input>
+            <input name="location" placeholder="San Francisco" id = "location_searchBox"> </input>
+            <input type="number" name="Review count min" placeholder="Minimum review: 100" min="0" id="lsl"/>
+            <button id="searchButton"> Search </button>
+        </div>
+        
+
+        <div id="vis-container"> <!-- A container to hold the visualization -->
+        </div>
+
+        <!-- more html content can go here -->
+
+        <p it="citation">Data from YELP API</p>
+
+    </main>     
+    
+    <script src="lib/jquery-2.2.3.js"></script> <!--jQuery-->
+    <script src="lib/d3.js"></script> <!--d3-->
+    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+    <script src="visualization.js"></script> <!--your script-->
+    <script src="lib/oauth-signature.js"></script>
+
+</body>
+</html>
